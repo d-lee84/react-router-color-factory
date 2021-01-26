@@ -4,8 +4,8 @@ import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import './App.css';
 
 import Home from "./Home";
-// import ColorPicker from "./ColorPicker";
-// import Color from "./Color";
+import ColorPicker from "./ColorPicker";
+import Color from "./Color";
 
 /** App Component
  * 
@@ -20,8 +20,12 @@ function App() {
 
   function addColor(formData) {
     setColors(c => (
-      [...c, formData]
+      [formData, ...c]
     ));
+  }
+
+  function getColor(name) {
+    return colors.find(c => c.name === name);
   }
 
   return (
@@ -35,7 +39,7 @@ function App() {
             <ColorPicker onSubmit={addColor} />
           </Route>
           <Route exact path="/colors/:color">
-            <Color />
+            <Color getColor={getColor}/>
           </Route>
           <Route>
             <Redirect to="/colors" />

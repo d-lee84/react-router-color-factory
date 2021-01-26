@@ -4,12 +4,13 @@ import { Link } from "react-router-dom";
 
 /** Home Component
  * 
- *  State:
+ *  Props:
  *  - colors: Array of color objects
  *    [{name, colorCode}, ...]
  */
 
 function Home({ colors }) {
+  
   /** Helper function to render the colors */
   function renderColors() {
     return colors.map(c => (
